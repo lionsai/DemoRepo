@@ -15,9 +15,7 @@ totalWorkingDays=1
 totalSalary=0
 
 
-while [[ $totalEmpHrs -lt $MAX_HOURS_IN_MONTH
-      && $totalWorkingDays -le $TOTAL_WORKING_DAYS ]]
-do
+function getWorkingHours() {
    empCheck=$((RANDOM%3))
 
 
@@ -26,6 +24,15 @@ do
       $IS_PART_TIME) workingHrs=4 ;;
       *) workingHrs=0
    esac
+}
+
+
+while [[ $totalEmpHrs -lt $MAX_HOURS_IN_MONTH
+      && $totalWorkingDays -le $TOTAL_WORKING_DAYS ]]
+do
+
+
+   getWorkingHours
 
 
    ((totalWorkingDays++))
